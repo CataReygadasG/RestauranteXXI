@@ -1,0 +1,13 @@
+:root{
+    background-color: rgb(153, 193, 230);
+    height: 2000px;
+    width: 100%;
+}
+
+.inicio{
+    background-color: aliceblue;
+}
+
+.h1{
+    font-family: "Raleway", sans-serif;
+}
