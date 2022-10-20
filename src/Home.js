@@ -13,7 +13,7 @@ const Home = ({user} ) => {
   return (
     <div>
      <h1>Bienvenido al Restaurente Siglo XXI</h1> 
-    {user.rol === "chef" ? <ChefView/> : user.rol === "admin" ? <AdminView/> : user.rol === "recepcionista" ? <RecepcionistaView/>: user.rol === "finanzas" ? <FinanzaView/> : user.rol === "bodega" ? <BodegaView/> : ''}
+    {user.rol === "chef" ? <ChefView/> : user.rol === "admin" ? <AdminView/> : user.rol === "recepcionista" ? <RecepcionistaView />: user.rol === "finanzas" ? <FinanzaView/> : user.rol === "bodega" ? <BodegaView/> : ''}
     <button onClick={cerrarSesion}>Cerrar sesión</button>
     </div>
   )

@@ -50,3 +50,15 @@ export const updateMesa = async (id, Disponibilidad) => {
     const colRef = collection(db, 'Mesas');
     await updateDoc(doc(colRef, id), {Disponibilidad})
 }
+
+// READ RESERVA
+export const getReserva = async () =>{
+    const result = await getDocs(query(collection(db, 'Reserva')));
+    return result;
+}
+
+// UPDATE RESERVA
+export const updateReserva = async (id, NumMesa) => {
+    const colRef = collection(db, 'Reserva');
+    await updateDoc(doc(colRef, id), {NumMesa})
+}
