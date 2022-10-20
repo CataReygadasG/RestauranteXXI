@@ -50,3 +50,26 @@ button, input, optgroup, select, textarea {
 p{
     font-size: 20px;
 }
+
+style de chef
+.align-items-stretch {
+  align-items: stretch!important;
+}
+
+.d-flex {
+  display: flex!important;
+}
+.cardServices {
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px rgb(0 0 0 / 15%);
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.col-md-6 {
+  width: 24.666667%;
+  margin-left: 205px;
+}
+
+.chef-desc{ margin: 9px 15px 0px 60px; }
+.bodega-desc{ margin: 9px 15px 0px 60px; }

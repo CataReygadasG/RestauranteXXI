@@ -1,5 +1,6 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
+import { getFirestore } from 'firebase/firestore';
 
 export const app = firebase.initializeApp({
     "projectId": process.env.REACT_APP_FIREBASE_PROJECTID,
@@ -9,3 +10,5 @@ export const app = firebase.initializeApp({
     "authDomain": process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
     "messagingSenderId": process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID
   });
+
+  export const db = getFirestore();

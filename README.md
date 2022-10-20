@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+---REQUISITOS---
+- Aceptar invitacion a proyecto de firebase.
+- Tener instalado ultima versión Node.js
+- Tener instalado vs code
+ 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+1.- Ejecutar comando "npm install", en el branch "dataGrid"
 
-In the project directory, you can run:
+2.- Ejecutar comando "npm install -g firebase-tools"
 
-### `npm start`
+3.- Ejecutar comando "firebase login", para iniciar sesión con su cuenta de profesor, en el informar error escribir "n" y enter
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4.- Porteriormente seleccionar la base de datos ejecutando el comando "firebase init", "y" a ready procced, seleccionar firestore con "espacio" y luego enter.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+5.- Dejar los nombres de los archivos predeterminados y si hay que sobreescribir, "y".
 
-### `npm test`
+6.- Instalar todos estos paquetes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm install @mui/x-data-grid
+npm install @mui/x-data-grid-generator
+npm install @mui/material
 
-### `npm run build`
+7.- Ejecutar firebase apps:create, seleccionar "web", colocarle el nombre "webApp-fb" (recomendacion de nombre)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+8.- Crear en la raiz del proyecto un archivo llamado ".env.local" y pegar lo siguiente
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+REACT_APP_FIREBASE_PROJECTID=restaurante-a9164
+REACT_APP_FIREBASE_STORAGEBUCKET=restaurante-a9164.appspot.com
+REACT_APP_FIREBASE_LOCATIONID=us-central
+REACT_APP_FIREBASE_APIKEY=AIzaSyBOndzTvoO9PwWzemF7i6-h551jtTiCgiw
+REACT_APP_FIREBASE_AUTHDOMAIN=restaurante-a9164.firebaseapp.com
+REACT_APP_FIREBASE_MESSAGINGSENDERID=937756067811
+(Esto se hace por temas de seguridad)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+9.- Y por ultimo "npm start", para ejecutar el proyecto y utilizarlo.
