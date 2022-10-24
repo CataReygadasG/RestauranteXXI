@@ -101,58 +101,61 @@ function RecepcionistaView() {
 
   return (
     <div>
-      {/*MESAS */}
-      <form action="#" id="formul">
-        <label>
-          Disponibilidad:
-          <select onChange={(e) => setDisponibilidad(e.target.value)}>
-            <option>Selecionar</option>
-            <option value="Desocupado">Desocupado</option>
-            <option value="Ocupado">Ocupado</option>
-          </select>
-        </label>
-      </form>
-      <br></br>
-      <br></br>
-      <button onClick={ActualizarM}>Actualizar</button>
-      <br></br>
-      <Box sx={{ height: 500, width: "50%" }}>
-        <DataGrid
-          checkboxSelection
-          onSelectionModelChange={(newSelectionModel) => {
-            setSelectionModelM(newSelectionModel);
-          }}
-          rows={mesa ? mesa.map(GuardadoM) : rowM}
-          columns={columnsM}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-        />
-      </Box>
-
-      {/*RESERVA */}
-      <form action="#" id="formul">
-        <input
-          type="text"
-          onChange={(e) => setNumMesa(e.target.value)}
-          placeholder="Mesa"
-        />
-      </form>
-      <br></br>
-      <br></br>
-      <button onClick={ActualizarR}>Actualizar</button>
-      <br></br>
-      <Box sx={{ height: 500, width: "50%" }}>
-        <DataGrid
-          checkboxSelection
-          onSelectionModelChange={(newSelectionModel) => {
-            setSelectionModelR(newSelectionModel);
-          }}
-          rows={numMesas ? numMesas.map(GuardadoR) : rowR}
-          columns={columnsR}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-        />
-      </Box>
+      <div>
+        {/*MESAS */}
+        <form action="#" id="formul">
+          <label>
+            Disponibilidad:
+            <select onChange={(e) => setDisponibilidad(e.target.value)}>
+              <option>Selecionar</option>
+              <option value="Desocupado">Desocupado</option>
+              <option value="Ocupado">Ocupado</option>
+            </select>
+          </label>
+        </form>
+        <br></br>
+        <br></br>
+        <button onClick={ActualizarM}>Actualizar</button>
+        <br></br>
+        <Box sx={{ height: 500, width: "50%" }}>
+          <DataGrid
+            checkboxSelection
+            onSelectionModelChange={(newSelectionModel) => {
+              setSelectionModelM(newSelectionModel);
+            }}
+            rows={mesa ? mesa.map(GuardadoM) : rowM}
+            columns={columnsM}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+          />
+        </Box>
+      </div>
+      <div>
+        {/*RESERVA */}
+        <form action="#" id="formul">
+          <input
+            type="text"
+            onChange={(e) => setNumMesa(e.target.value)}
+            placeholder="Mesa"
+          />
+        </form>
+        <br></br>
+        <br></br>
+        <button onClick={ActualizarR}>Actualizar</button>
+        <br></br>
+        <Box sx={{ height: 500, width: "50%" }}>
+          <DataGrid
+            checkboxSelection
+            onSelectionModelChange={(newSelectionModel) => {
+              setSelectionModelR(newSelectionModel);
+            }}
+            rows={numMesas ? numMesas.map(GuardadoR) : rowR}
+            columns={columnsR}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+          />
+        </Box>
+      </div>
     </div>
   );
 }

@@ -9,21 +9,21 @@ function ChefView() {
   const [estadoOrden, setEstadoOrden] = React.useState("");
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 200 },
     {
       field: "cantidad",
       headerName: "Cantidad",
-      width: 150,
+      width: 250,
     },
     {
       field: "item",
       headerName: "Item",
-      width: 150,
+      width: 300,
     },
     {
       field: "estado",
       headerName: "Estado",
-      width: 110,
+      width: 200,
     },
   ];
 
@@ -44,11 +44,15 @@ function ChefView() {
     Buscar();
   };
 
-  const Guardado = (item, i) => {
+  const Guardado = (item) => {
+    // orden.map((order) => {
+    //   arrCantidad.push(order.cantidad);
+    //   arrItems.push(order.item);
+    // });
     return {
       id: item.id,
-      cantidad: item.data().shopOrderToUser[i++].cantidad,
-      item: item.data().shopOrderToUser[i++].item,
+      cantidad: item.data().shopOrderToUser.map((item) => `${item.cantidad}`),
+      item: item.data().shopOrderToUser.map((item) => `${item.item}`),
       estado: item.data().estado,
     };
   };
@@ -69,7 +73,7 @@ function ChefView() {
       <br></br>
       <button onClick={Actualizar}>Actualizar</button>
       <br></br>
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ height: 600, width: "100%" }}>
         <DataGrid
           checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {
