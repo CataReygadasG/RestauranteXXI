@@ -1,9 +1,3 @@
-:root {
-  background-color: rgb(153, 193, 230);
-  height: 2000px;
-  width: 100%;
-}
-
 .inicio {
   background-color: aliceblue;
 }
@@ -93,4 +87,19 @@ style de chef .align-items-stretch {
 }
 .order__state {
   width: 150px !important;
+}
+
+.recepcionista {
+  display: flex;
+}
+.mesas {
+  width: 2000px;
+  margin-right: -460px;
+}
+.reserva {
+  width: 2000px;
+}
+
+#recepcionista label {
+  margin-right: 10px;
 }

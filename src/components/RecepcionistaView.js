@@ -16,17 +16,22 @@ function RecepcionistaView() {
     {
       field: "id",
       headerName: "ID",
-      width: 90,
+      width: 200,
     },
     {
       field: "mesa",
       headerName: "Mesa",
-      width: 150,
+      width: 70,
     },
     {
       field: "disponibilidad",
       headerName: "Disponibilidad",
-      width: 90,
+      width: 120,
+    },
+    {
+      field: "numPersonas",
+      headerName: "Numero Personas",
+      width: 145,
     },
   ];
 
@@ -52,6 +57,7 @@ function RecepcionistaView() {
       id: item.id,
       mesa: item.data().Mesa,
       disponibilidad: item.data().Disponibilidad,
+      numPersonas: item.data().NumPersonas,
     };
   };
 
@@ -60,7 +66,7 @@ function RecepcionistaView() {
     {
       field: "id",
       headerName: "ID",
-      width: 90,
+      width: 150,
     },
     {
       field: "nombre",
@@ -100,21 +106,17 @@ function RecepcionistaView() {
   };
 
   return (
-    <div>
-      <div>
+    <div id="recepcionista" className="recepcionista">
+      <div className="mesas">
         {/*MESAS */}
         <form action="#" id="formul">
-          <label>
-            Disponibilidad:
-            <select onChange={(e) => setDisponibilidad(e.target.value)}>
-              <option>Selecionar</option>
-              <option value="Desocupado">Desocupado</option>
-              <option value="Ocupado">Ocupado</option>
-            </select>
-          </label>
+          <label>Disponibilidad:</label>
+          <select onChange={(e) => setDisponibilidad(e.target.value)}>
+            <option>Selecionar</option>
+            <option value="Desocupado">Desocupado</option>
+            <option value="Ocupado">Ocupado</option>
+          </select>
         </form>
-        <br></br>
-        <br></br>
         <button onClick={ActualizarM}>Actualizar</button>
         <br></br>
         <Box sx={{ height: 500, width: "50%" }}>
@@ -130,9 +132,10 @@ function RecepcionistaView() {
           />
         </Box>
       </div>
-      <div>
+      <div className="reserva">
         {/*RESERVA */}
         <form action="#" id="formul">
+          <label>Numero de Mesa:</label>
           <input
             type="text"
             onChange={(e) => setNumMesa(e.target.value)}
