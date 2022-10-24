@@ -1,64 +1,88 @@
-import { collection, getDocs, query, doc, addDoc, deleteDoc, updateDoc } from "firebase/firestore";
-import { db } from '../fb';
+import {
+  collection,
+  getDocs,
+  query,
+  doc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../fb";
 
 //PRODUCTO
 // CREATE
-export const createProducto = async(Categoria, PrecioUni, Producto, Stock) => {
-    addDoc(collection(db, 'Bodega'), await {Categoria, PrecioUni, Producto, Stock});
-}
+export const createProducto = async (Categoria, PrecioUni, Producto, Stock) => {
+  addDoc(
+    collection(db, "Bodega"),
+    await { Categoria, PrecioUni, Producto, Stock }
+  );
+};
 
 // READ
-export const getProducto = async () =>{
-    const result = await getDocs(query(collection(db, 'Bodega')));
-    return result;
-}
+export const getProducto = async () => {
+  const result = await getDocs(query(collection(db, "Bodega")));
+  return result;
+};
 
 // UPDATE
 export const updateProducto = async (id, PrecioUni, Stock) => {
-    const colRef = collection(db, 'Bodega');
-    await updateDoc(doc(colRef, id), {PrecioUni, Stock})
-}
+  const colRef = collection(db, "Bodega");
+  await updateDoc(doc(colRef, id), { PrecioUni, Stock });
+};
 
 // DELETE
 export const deleteProducto = async (id) => {
-    const colRef = collection(db, 'Bodega');
-    await deleteDoc(doc(colRef, id));
-}
+  const colRef = collection(db, "Bodega");
+  await deleteDoc(doc(colRef, id));
+};
 
 // FINANZAS
 // READ
-export const getPago = async () =>{
-    const result = await getDocs(query(collection(db, 'orders')));
-    return result;
-}
+export const getPago = async () => {
+  const result = await getDocs(query(collection(db, "orders")));
+  return result;
+};
 
 // UPDATE
 export const updatePago = async (id, estado_pago) => {
-    const colRef = collection(db, 'orders');
-    await updateDoc(doc(colRef, id), {estado_pago})
-}
+  const colRef = collection(db, "orders");
+  await updateDoc(doc(colRef, id), { estado_pago });
+};
 
 // RECEPCIONISTA
 // READ MESAS
-export const getMesa = async () =>{
-    const result = await getDocs(query(collection(db, 'Mesas')));
-    return result;
-}
+export const getMesa = async () => {
+  const result = await getDocs(query(collection(db, "Mesas")));
+  return result;
+};
 
 // UPDATE MESAS
 export const updateMesa = async (id, Disponibilidad) => {
-    const colRef = collection(db, 'Mesas');
-    await updateDoc(doc(colRef, id), {Disponibilidad})
-}
+  const colRef = collection(db, "Mesas");
+  await updateDoc(doc(colRef, id), { Disponibilidad });
+};
 
 // READ RESERVA
-export const getReserva = async () =>{
-    const result = await getDocs(query(collection(db, 'Reserva')));
-    return result;
-}
+export const getReserva = async () => {
+  const result = await getDocs(query(collection(db, "Reserva")));
+  return result;
+};
 
 // UPDATE RESERVA
 export const updateReserva = async (id, NumMesa) => {
-    const colRef = collection(db, 'Reserva');
-    await updateDoc(doc(colRef, id), {NumMesa})
-}
+  const colRef = collection(db, "Reserva");
+  await updateDoc(doc(colRef, id), { NumMesa });
+};
+
+//  CHEF
+// READ
+export const getOrden = async () => {
+  const result = await getDocs(query(collection(db, "orders")));
+  return result;
+};
+
+// UPDATE
+export const updateOrden = async (id, estado) => {
+  const colRef = collection(db, "orders");
+  await updateDoc(doc(colRef, id), { estado });
+};
