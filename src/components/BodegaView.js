@@ -17,7 +17,9 @@ function BodegaView() {
   const [selectionModel, setSelectionModel] = React.useState([]);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", 
+      headerName: "ID",
+      width: 150 },
     {
       field: "producto",
       headerName: "Producto",
@@ -31,13 +33,13 @@ function BodegaView() {
     {
       field: "category",
       headerName: "Categoria",
-      width: 110,
+      width: 150,
     },
     {
       field: "unPrice",
       headerName: "Precio Unitario",
       width: 150,
-    },
+    }
   ];
 
   const row = [];
@@ -104,12 +106,12 @@ function BodegaView() {
         />
       </form>
       <br></br>
+      <button onClick={Crear} class="btn btn-success">Guardar</button>
+      <button onClick={Eliminar} class="btn btn-danger">Eliminar</button>
+      <button onClick={Actualizar}  class="btn btn-primary">Actualizar</button>
       <br></br>
-      <button onClick={Crear}>Guardar</button>
-      <button onClick={Eliminar}>Eliminar</button>
-      <button onClick={Actualizar}>Actualizar</button>
       <br></br>
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ height: 400, width: "50%" }}>
         <DataGrid
           checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {

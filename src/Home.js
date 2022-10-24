@@ -13,8 +13,10 @@ const Home = ({user} ) => {
   return (
     <div>
      <h1>Bienvenido al Restaurente Siglo XXI</h1> 
+     <br></br>
     {user.rol === "chef" ? <ChefView/> : user.rol === "admin" ? <AdminView/> : user.rol === "recepcionista" ? <RecepcionistaView />: user.rol === "finanzas" ? <FinanzaView/> : user.rol === "bodega" ? <BodegaView/> : ''}
-    <button onClick={cerrarSesion}>Cerrar sesión</button>
+    <button onClick={cerrarSesion}class="btn btn-warning">Cerrar sesión</button>
+    <br></br>
     </div>
   )
 };

@@ -6,6 +6,7 @@
 
 .text-secondary {
   color: white !important;
+  margin-left: 170px;
 }
 
 .container {
@@ -38,6 +39,7 @@ textarea {
   background-color: #007bff;
   border-color: #007bff;
   margin-top: -5px;
+  
 }
 
 .img-background {
