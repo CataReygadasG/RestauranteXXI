@@ -1,19 +1,20 @@
 .text-center {
   text-align: initial !important;
   margin-top: 10px;
-  margin-left: 11px;
+  margin-left: 10px;
 }
 
 .text-secondary {
   color: white !important;
-  margin-left: 170px;
+  
 }
-
+/*max-width*/
 .container {
   height: 800px;
   width: auto;
   max-width: 100%;
   position: relative;
+  max-width: 52%;
 }
 
 label {
@@ -38,7 +39,7 @@ textarea {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  margin-top: -5px;
+
   
 }
 
