@@ -8,6 +8,17 @@
   color: white !important;
   
 }
+/*input*/
+#bodega input {
+  margin-left: 10px;
+  margin-top: 10px;
+
+}
+/*botones*/
+#bodega button{
+  margin-top: 10px;
+  margin-left: 10px;
+}
 /*max-width*/
 .container {
   height: 800px;
