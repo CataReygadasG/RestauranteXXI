@@ -2,6 +2,7 @@ import { getMesa, updateMesa, getReserva, updateReserva } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import Swal from "sweetalert2";
 
 function RecepcionistaView() {
   const [selectionModelM, setSelectionModelM] = React.useState([]);
@@ -31,7 +32,7 @@ function RecepcionistaView() {
     {
       field: "numPersonas",
       headerName: "Numero Personas",
-      width: 145,
+      width: 138,
     },
   ];
 
@@ -49,6 +50,11 @@ function RecepcionistaView() {
   const ActualizarM = async () => {
     const id = selectionModelM[0];
     await updateMesa(id, disponibilidad);
+    Swal.fire(
+      "Disponibilidad de mesa",
+      "Se a actualizado correctamente",
+      "success"
+    );
     BuscarM();
   };
 
@@ -66,17 +72,22 @@ function RecepcionistaView() {
     {
       field: "id",
       headerName: "ID",
-      width: 150,
+      width: 200,
     },
     {
       field: "nombre",
       headerName: "Nombre",
-      width: 150,
+      width: 80,
     },
     {
       field: "numMesa",
       headerName: "Numero Mesa",
-      width: 90,
+      width: 110,
+    },
+    {
+      field: "numPersonas",
+      headerName: "Numero Personas",
+      width: 138,
     },
   ];
 
@@ -94,6 +105,11 @@ function RecepcionistaView() {
   const ActualizarR = async () => {
     const id = selectionModelR[0];
     await updateReserva(id, numMesa);
+    Swal.fire(
+      "Asignación de mesa",
+      "Se a actualizado correctamente",
+      "success"
+    );
     BuscarR();
   };
 
@@ -102,6 +118,7 @@ function RecepcionistaView() {
       id: item.id,
       nombre: item.data().Nombre,
       numMesa: item.data().NumMesa,
+      numPersonas: item.data().Cantidad_Personas,
     };
   };
 
@@ -112,12 +129,14 @@ function RecepcionistaView() {
         <form action="#" id="formul">
           <label>Disponibilidad:</label>
           <select onChange={(e) => setDisponibilidad(e.target.value)}>
-            <option>Selecionar</option>
+            <option>Seleccionar</option>
             <option value="Desocupado">Desocupado</option>
             <option value="Ocupado">Ocupado</option>
           </select>
         </form>
-        <button onClick={ActualizarM}>Actualizar</button>
+        <button onClick={ActualizarM} className="btn btn-outline-primary">
+          Actualizar
+        </button>
         <br></br>
         <Box sx={{ height: 500, width: "50%" }}>
           <DataGrid
@@ -142,9 +161,9 @@ function RecepcionistaView() {
             placeholder="Mesa"
           />
         </form>
-        <br></br>
-        <br></br>
-        <button onClick={ActualizarR}>Actualizar</button>
+        <button onClick={ActualizarR} className="btn btn-outline-primary">
+          Actualizar
+        </button>
         <br></br>
         <Box sx={{ height: 500, width: "50%" }}>
           <DataGrid

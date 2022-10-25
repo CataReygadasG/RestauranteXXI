@@ -89,12 +89,14 @@ style de chef .align-items-stretch {
   width: 150px !important;
 }
 
+/*RECEPCIONISTA*/
 .recepcionista {
   display: flex;
 }
 .mesas {
   width: 2000px;
   margin-right: -460px;
+  margin-left: 40px;
 }
 .reserva {
   width: 2000px;
@@ -102,4 +104,26 @@ style de chef .align-items-stretch {
 
 #recepcionista label {
   margin-right: 10px;
+}
+
+#recepcionista button {
+  margin-bottom: 10px;
+}
+#recepcionista input {
+  height: 20px;
+}
+
+/*HOME*/
+
+#home button {
+  margin-top: 20px;
+  margin-left: 40px;
+}
+#home h1 {
+  margin-left: 30px;
+}
+.title-home {
+  background-color: rgb(168, 233, 233);
+  height: 100px;
+  margin-bottom: 20px;
 }
