@@ -106,9 +106,9 @@ function BodegaView() {
         />
       </form>
       <br></br>
-      <button onClick={Crear} class="btn btn-success">Guardar</button>
-      <button onClick={Eliminar} class="btn btn-danger">Eliminar</button>
-      <button onClick={Actualizar}  class="btn btn-primary">Actualizar</button>
+      <button onClick={Crear} className="btn btn-outline-success">Guardar</button>
+      <button onClick={Eliminar} className="btn btn-outline-danger">Eliminar</button>
+      <button onClick={Actualizar}  className="btn btn-outline-primary">Actualizar</button>
       <br></br>
       <br></br>
       <Box sx={{ height: 400, width: "50%" }}>
