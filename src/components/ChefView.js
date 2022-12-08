@@ -2,6 +2,7 @@ import { getOrden, updateOrden } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import Swal from "sweetalert2";
 
 function ChefView() {
   const [orden, setOrden] = React.useState(null);
@@ -13,17 +14,22 @@ function ChefView() {
     {
       field: "cantidad",
       headerName: "Cantidad",
-      width: 250,
+      width: 200,
     },
     {
       field: "item",
-      headerName: "Item",
-      width: 300,
+      headerName: "Ítem",
+      width: 600,
     },
     {
       field: "estado",
       headerName: "Estado",
-      width: 200,
+      width: 150,
+    },
+    {
+      field: "mesa",
+      headerName: "Mesa",
+      width: 130,
     },
   ];
 
@@ -41,39 +47,47 @@ function ChefView() {
   const Actualizar = async () => {
     const id = selectionModel[0];
     await updateOrden(id, estadoOrden);
+    if (estadoOrden === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Alert!",
+        text: "Seleccionar un estado de orden",
+        button: "success",
+      });
+    } else {
+      Swal.fire(
+        "Alert!",
+        "El estado de orden se a actualizado correctamente",
+        "success"
+      );
+    }
     Buscar();
   };
 
   const Guardado = (item) => {
-    // orden.map((order) => {
-    //   arrCantidad.push(order.cantidad);
-    //   arrItems.push(order.item);
-    // });
     return {
       id: item.id,
       cantidad: item.data().shopOrderToUser.map((item) => `${item.cantidad}`),
       item: item.data().shopOrderToUser.map((item) => `${item.item}`),
       estado: item.data().estado,
+      mesa: item.data().mesa,
     };
   };
 
   return (
-    <div>
-      <form action="#" id="formul">
-        <label>
-          Estados de Orden:
-          <select onChange={(e) => setEstadoOrden(e.target.value)}>
-            <option>Selecionar</option>
-            <option value="En Preparacion">En Preparacion</option>
-            <option value="Finalizado">Finalizado</option>
-          </select>
-        </label>
+    <div id="chef" className="chef">
+      <form action="#" id="formul" required>
+        <label>Estados de Orden:</label>
+        <select onChange={(e) => setEstadoOrden(e.target.value)}>
+          <option value="">Seleccionar</option>
+          <option value="En Preparacion">En Preparación</option>
+          <option value="Finalizado">Finalizado</option>
+        </select>
       </form>
-      <br></br>
-      <br></br>
-      <button onClick={Actualizar}>Actualizar</button>
-      <br></br>
-      <Box sx={{ height: 600, width: "100%" }}>
+      <button onClick={Actualizar} className="btn btn-outline-primary">
+        Actualizar
+      </button>
+      <Box sx={{ height: 600, width: "70%" }}>
         <DataGrid
           checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {

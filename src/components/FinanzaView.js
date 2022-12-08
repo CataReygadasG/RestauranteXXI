@@ -2,9 +2,10 @@ import { getPago, updatePago } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import Swal from "sweetalert2";
 
 function FinanzaView() {
-  const [estado_pago, setEstado_pago] = React.useState(null);
+  const [estado_pago, setEstado_pago] = React.useState("");
   const [pago, setPago] = React.useState(null);
   const [selectionModel, setSelectionModel] = React.useState([]);
 
@@ -28,7 +29,7 @@ function FinanzaView() {
     {
       field: "estado_pago",
       headerName: "Estado de pago",
-      width: 110,
+      width: 120,
     },
   ];
 
@@ -46,6 +47,20 @@ function FinanzaView() {
   const Actualizar = async () => {
     const id = selectionModel[0];
     await updatePago(id, estado_pago);
+    if (estado_pago === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Alert!",
+        text: "Seleccionar un estado de pago",
+        button: "success",
+      });
+    } else {
+      Swal.fire(
+        "Alert!",
+        "El estado de pago se a actualizado correctamente",
+        "success"
+      );
+    }
     Buscar();
   };
 
@@ -66,12 +81,12 @@ function FinanzaView() {
   };
 
   return (
-    <div>
+    <div className="finanza">
       <form action="#" id="formul">
         <label>
-          Estado de Pago:
+          Estado de Pago:{" "}
           <select onChange={(e) => setEstado_pago(e.target.value)}>
-            <option>Selecionar</option>
+            <option value="">Seleccionar</option>
             <option value="Pendiente">Pendiente</option>
             <option value="Pagado">Pagado</option>
           </select>
@@ -79,9 +94,11 @@ function FinanzaView() {
       </form>
       <br></br>
       <br></br>
-      <button onClick={Actualizar}>Actualizar</button>
+      <button onClick={Actualizar} className="btn btn-outline-primary">
+        Actualizar
+      </button>
       <br></br>
-      <Box sx={{ height: 400, width: "100%" }}>
+      <Box sx={{ height: 542, width: "38%" }}>
         <DataGrid
           checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {

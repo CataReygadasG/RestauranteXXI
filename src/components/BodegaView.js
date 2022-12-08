@@ -7,6 +7,7 @@ import {
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import Swal from "sweetalert2";
 
 function BodegaView() {
   const [producto, setProducto] = React.useState(null);
@@ -17,9 +18,7 @@ function BodegaView() {
   const [selectionModel, setSelectionModel] = React.useState([]);
 
   const columns = [
-    { field: "id", 
-      headerName: "ID",
-      width: 150 },
+    { field: "id", headerName: "ID", width: 150 },
     {
       field: "producto",
       headerName: "Producto",
@@ -32,20 +31,21 @@ function BodegaView() {
     },
     {
       field: "category",
-      headerName: "Categoria",
+      headerName: "Categoría",
       width: 150,
     },
     {
       field: "unPrice",
       headerName: "Precio Unitario",
       width: 150,
-    }
+    },
   ];
 
   const row = [];
 
   const Crear = async () => {
     await createProducto(categoria, precioU, producto, stock);
+    Swal.fire("Alert!", "El producto se a creado correctamente", "success");
     Buscar();
     document.getElementById("formul").reset();
   };
@@ -62,13 +62,20 @@ function BodegaView() {
   const Eliminar = async () => {
     const id = selectionModel[0];
     await deleteProducto(id);
+    Swal.fire("Alert!", "El producto se a eliminado correctamente", "success");
     Buscar();
   };
 
   const Actualizar = async () => {
     const id = selectionModel[0];
     await updateProducto(id, precioU, stock);
+    Swal.fire(
+      "Alert!",
+      "El producto se a actualizado correctamente",
+      "success"
+    );
     Buscar();
+    document.getElementById("formul").reset();
   };
 
   const Guardado = (item) => {
@@ -82,35 +89,42 @@ function BodegaView() {
   };
 
   return (
-    <div id="bodega">
-      <form action="#" id="formul">
+    <div id="bodega" className="bodega">
+      <form action="#" id="formul" className="form-container">
         <input
           type="text"
           onChange={(e) => setProducto(e.target.value)}
-          placeholder="product"
+          placeholder="Producto"
         />
         <input
           type="number"
           onChange={(e) => setStock(e.target.value)}
-          placeholder="stock"
+          placeholder="Stock"
         />
         <input
           type="text"
           onChange={(e) => setCategoria(e.target.value)}
-          placeholder="categoria"
+          placeholder="Categoría"
         />
         <input
           type="number"
           onChange={(e) => setPrecioU(e.target.value)}
-          placeholder="precioU"
+          placeholder="Precio Unitario"
         />
       </form>
-      
-      <button onClick={Crear} className="btn btn-outline-success">Guardar</button>
-      <button onClick={Eliminar} className="btn btn-outline-danger">Eliminar</button>
-      <button onClick={Actualizar}  className="btn btn-outline-primary">Actualizar</button>
-      
-      <Box sx={{ height: 400, width: "50%" }}>
+      <br></br>
+      <button onClick={Crear} class="btn btn-outline-success">
+        Guardar
+      </button>
+      <button onClick={Eliminar} class="btn btn-outline-danger">
+        Eliminar
+      </button>
+      <button onClick={Actualizar} class="btn btn-outline-primary">
+        Actualizar
+      </button>
+      <br></br>
+      <br></br>
+      <Box sx={{ height: 545, width: "50%" }}>
         <DataGrid
           checkboxSelection
           onSelectionModelChange={(newSelectionModel) => {

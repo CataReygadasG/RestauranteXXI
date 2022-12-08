@@ -31,7 +31,7 @@ function RecepcionistaView() {
     },
     {
       field: "numPersonas",
-      headerName: "Numero Personas",
+      headerName: "Número Personas",
       width: 138,
     },
   ];
@@ -50,12 +50,22 @@ function RecepcionistaView() {
   const ActualizarM = async () => {
     const id = selectionModelM[0];
     await updateMesa(id, disponibilidad);
-    Swal.fire(
-      "Disponibilidad de mesa",
-      "Se a actualizado correctamente",
-      "success"
-    );
+    if (disponibilidad === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Alert!",
+        text: "Seleccionar una disponibilidad",
+        button: "success",
+      });
+    } else {
+      Swal.fire(
+        "Alert!",
+        "La disponibilidad de mesa se a actualizado correctamente",
+        "success"
+      );
+    }
     BuscarM();
+    document.getElementById("formul").reset();
   };
 
   const GuardadoM = (item) => {
@@ -81,12 +91,12 @@ function RecepcionistaView() {
     },
     {
       field: "numMesa",
-      headerName: "Numero Mesa",
+      headerName: "Número Mesa",
       width: 110,
     },
     {
       field: "numPersonas",
-      headerName: "Numero Personas",
+      headerName: "Número Personas",
       width: 138,
     },
   ];
@@ -105,12 +115,22 @@ function RecepcionistaView() {
   const ActualizarR = async () => {
     const id = selectionModelR[0];
     await updateReserva(id, numMesa);
-    Swal.fire(
-      "Asignación de mesa",
-      "Se a actualizado correctamente",
-      "success"
-    );
+    if (numMesa === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Alert!",
+        text: "Rellenear campo",
+        button: "success",
+      });
+    } else {
+      Swal.fire(
+        "Alert!",
+        "La asignación de mesa se a actualizado correctamente",
+        "success"
+      );
+    }
     BuscarR();
+    document.getElementById("formul").reset();
   };
 
   const GuardadoR = (item) => {
@@ -138,7 +158,7 @@ function RecepcionistaView() {
           Actualizar
         </button>
         <br></br>
-        <Box sx={{ height: 500, width: "50%" }}>
+        <Box sx={{ height: 600, width: "50%" }}>
           <DataGrid
             checkboxSelection
             onSelectionModelChange={(newSelectionModel) => {
@@ -154,9 +174,9 @@ function RecepcionistaView() {
       <div className="reserva">
         {/*RESERVA */}
         <form action="#" id="formul">
-          <label>Numero de Mesa:</label>
+          <label>Número de Mesa:</label>
           <input
-            type="text"
+            type="number"
             onChange={(e) => setNumMesa(e.target.value)}
             placeholder="Mesa"
           />
@@ -165,7 +185,7 @@ function RecepcionistaView() {
           Actualizar
         </button>
         <br></br>
-        <Box sx={{ height: 500, width: "50%" }}>
+        <Box sx={{ height: 600, width: "50%" }}>
           <DataGrid
             checkboxSelection
             onSelectionModelChange={(newSelectionModel) => {

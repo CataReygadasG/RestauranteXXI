@@ -1,15 +1,10 @@
-.inicio {
-  background-color: aliceblue;
-}
-
-.h1 {
-  font-family: "Raleway", sans-serif;
-}
-
-.text-center {
-  text-align: initial !important;
-  margin-top: 10px;
-  margin-left: 10px;
+#logueo .container {
+  width: 50%;
+  text-align: center;
+  background-color: #1d1d1d;
+  border-radius: 10px;
+  margin-top: 50px;
+  height: 350px;
 }
 
 .text-secondary {
@@ -18,16 +13,9 @@
 
 .container {
   height: 800px;
-  width: auto;
+  width: 65%;
   max-width: 100%;
   position: relative;
-}
-
-label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  margin-left: 15px;
-  margin-right: 20px;
 }
 
 button,
@@ -42,18 +30,22 @@ textarea {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-  margin-top: -5px;
+  margin-top: 20px;
 }
 
 .img-background {
   object-fit: cover;
   width: 100%;
-  height: 106vh;
+  height: 939px;
   position: absolute;
-  margin-top: -10px;
+  margin-top: -52px;
+}
+
+.img-background-home {
+  object-fit: cover;
+  width: 100%;
+  height: 939px;
+  margin-top: 44px;
 }
 
 p {
@@ -79,19 +71,16 @@ style de chef .align-items-stretch {
   margin-left: 205px;
 }
 
-.chef-desc {
-  margin: 9px 15px 0px 60px;
-}
-.bodega-desc {
-  margin: 9px 15px 0px 60px;
-}
-.order__state {
-  width: 150px !important;
+.btn {
+  margin-bottom: 20px;
 }
 
 /*RECEPCIONISTA*/
 .recepcionista {
   display: flex;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=2000&t=st=1670268568~exp=1670269168~hmac=99be756fee8bac1789ef3123bb8e099ecd367b48c9061d61fa154ccafbf34bc2");
+  margin-top: -20px;
+  margin-bottom: -100px;
 }
 .mesas {
   width: 2000px;
@@ -121,9 +110,95 @@ style de chef .align-items-stretch {
 }
 #home h1 {
   margin-left: 30px;
+  color: aliceblue;
+  display: contents;
 }
 .title-home {
-  background-color: rgb(168, 233, 233);
+  background-color: rgb(0, 0, 0);
   height: 100px;
   margin-bottom: 20px;
+}
+.footer-home {
+  background-color: rgb(0, 0, 0);
+  margin-top: 100px;
+  height: 136px;
+}
+.btn-position {
+  margin-top: 35px !important;
+}
+
+/*CHEF*/
+.chef {
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=2000&t=st=1670268568~exp=1670269168~hmac=99be756fee8bac1789ef3123bb8e099ecd367b48c9061d61fa154ccafbf34bc2");
+  margin-top: -20px;
+  margin-bottom: -100px;
+}
+
+#chef label {
+  margin-right: 10px;
+}
+
+#chef button {
+  margin-bottom: 10px;
+}
+#chef input {
+  height: 20px;
+}
+.chef-desc {
+  margin: 9px 15px 0px 60px;
+}
+.order__state {
+  width: 150px !important;
+}
+
+/*BODEGA*/
+
+.form-container {
+  margin-left: 10px;
+}
+.bodega-desc {
+  margin: 9px 15px 0px 60px;
+}
+
+/*ADMIN*/
+.admin {
+  margin-top: -20px;
+  margin-bottom: -100px;
+  display: flex;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=2000&t=st=1670268568~exp=1670269168~hmac=99be756fee8bac1789ef3123bb8e099ecd367b48c9061d61fa154ccafbf34bc2");
+  text-align: center;
+}
+.admin-user {
+  margin-right: 65px;
+  margin-left: 20px;
+}
+.admin-mesa {
+  margin-right: 65px;
+  width: 38%;
+}
+.admin-venta {
+  width: 38%;
+}
+
+/*LOGUEO*/
+#logueo .form-control {
+  width: 40%;
+  margin-left: 277px;
+}
+
+.img-logo {
+  margin-left: 10px;
+  width: 5%;
+}
+
+.finanza {
+  margin-top: -20px;
+  margin-bottom: -100px;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=2000&t=st=1670268568~exp=1670269168~hmac=99be756fee8bac1789ef3123bb8e099ecd367b48c9061d61fa154ccafbf34bc2");
+}
+
+.bodega {
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-blanco-gris-brillante-lineas-onduladas_1017-25101.jpg?w=2000&t=st=1670268568~exp=1670269168~hmac=99be756fee8bac1789ef3123bb8e099ecd367b48c9061d61fa154ccafbf34bc2");
+  margin-top: -20px;
+  margin-bottom: -100px;
 }

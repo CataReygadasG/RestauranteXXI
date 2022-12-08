@@ -13,7 +13,8 @@ const Home = ({ user }) => {
   return (
     <div id="home">
       <div className="title-home">
-        <h1>Bienvenido al Restaurente Siglo XXI</h1>
+        <img src="/img/Logo_2.jpg" className="img-logo" alt="siglo_xxi" />
+        <h1>Restaurente Siglo XXI</h1>
       </div>
       {user.rol === "chef" ? (
         <ChefView />
@@ -28,9 +29,11 @@ const Home = ({ user }) => {
       ) : (
         ""
       )}
-      <button onClick={cerrarSesion} className="btn btn-primary">
-        Cerrar sesión
-      </button>
+      <div className="footer-home">
+        <button onClick={cerrarSesion} className="btn btn-primary btn-position">
+          Cerrar sesión
+        </button>
+      </div>
     </div>
   );
 };

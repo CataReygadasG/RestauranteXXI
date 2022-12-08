@@ -74,7 +74,7 @@ export const updateReserva = async (id, NumMesa) => {
   await updateDoc(doc(colRef, id), { NumMesa });
 };
 
-//  CHEF
+// CHEF
 // READ
 export const getOrden = async () => {
   const result = await getDocs(query(collection(db, "orders")));
@@ -85,4 +85,53 @@ export const getOrden = async () => {
 export const updateOrden = async (id, estado) => {
   const colRef = collection(db, "orders");
   await updateDoc(doc(colRef, id), { estado });
+};
+
+// ADMIN
+// CREATE MESA
+export const createMesa = async (Disponibilidad, Mesa, NumPersonas) => {
+  addDoc(collection(db, "Mesas"), await { Disponibilidad, Mesa, NumPersonas });
+};
+
+// DELETE MESA
+export const deleteMesa = async (id) => {
+  const colRef = collection(db, "Mesas");
+  await deleteDoc(doc(colRef, id));
+};
+
+// CREATE PRODUCTOS VENTA
+export const createProductoVenta = async (
+  description,
+  pictureUrl,
+  price,
+  title
+) => {
+  addDoc(
+    collection(db, "products"),
+    await { description, pictureUrl, price, title }
+  );
+};
+
+// READ PRODUCTOS VENTA
+export const getProductoVenta = async () => {
+  const result = await getDocs(query(collection(db, "products")));
+  return result;
+};
+
+// DELETE PRODUCTOS VENTA
+export const deleteProductoVenta = async (id) => {
+  const colRef = collection(db, "products");
+  await deleteDoc(doc(colRef, id));
+};
+
+// UPDATE PRODUCTOS VENTA
+export const updateProductoVenta = async (id, price, pictureUrl) => {
+  const colRef = collection(db, "orders");
+  await updateDoc(doc(colRef, id), { price, pictureUrl });
+};
+
+//READ BY CORREO
+export const getCorreoVerif = async () => {
+  const result = await getDocs(query(collection(db, "usuarios")));
+  return result;
 };
