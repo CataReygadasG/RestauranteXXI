@@ -1,36 +1,52 @@
 import * as React from "react";
-import { app } from "./fb";
+import  firebaseApp  from "./fb";
 import Swal from "sweetalert2";
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+
+const auth = getAuth(firebaseApp)
 
 const Logueo = (props) => {
-  const [isRegistrado, setRegistrado] = React.useState(false);
+  //?
+  //isRegistrado: esta registrado 
+  //setRegistrado: asigna un nuevo valor a la propiedad
+  const [isRegistrado, setRegistrado] = React.useState(false); 
 
   const iniciarSesion = (correo, password) => {
     //iniciar sesion
-    app
-      .auth()
-      .signInWithEmailAndPassword(correo, password)
-      .then((usuarioFirebase) => {
-        console.log("sesión iniciada con:", usuarioFirebase.user);
-        props.setRegistrado(usuarioFirebase);
+  try{
+    signInWithEmailAndPassword(auth, correo, password)//iniciar sesión con correo electrónico y contraseña
+    .then((usuarioFirebase) => { //método then: devuelve una Promise que permite encadenar métodos
+      console.log("sesión iniciada con:", usuarioFirebase.user);
+      props.setRegistrado(usuarioFirebase);//asigna nuevo valor al usuario firebase
+    })
+    .catch((err) => {console.log(err)
+      Swal.fire({
+        icon: "info",
+        title: "error de autenticación",
+        text: "usuario no existe o contraseña incorrecta",
+        button: "success",
       });
+    })
+  }
+  catch(err){
+    console.log(err)
+    
+  }
   };
-
+//submitHandler:especificar una función que se llamará cuando la validación haya tenido éxito
+//
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault();//previene el comportamiento por defecto que trae consigo el evento
     const correo = e.target.emailField.value;
     const password = e.target.passwordField.value;
 
-    if (!isRegistrado) {
+
+    if (!isRegistrado) {//si no esta registrado
       iniciarSesion(correo, password);
     } else {
-      Swal.fire({
-        icon: "info",
-        title: "Estado de Reserva",
-        text: "No hay reserva",
-        button: "success",
-      });
+    
     }
+    //COMO MOSTRAR MENSAJE CUANDO NO EXISTE LA CUENTA...
   };
   return (
     <div id="logueo">

@@ -1,10 +1,13 @@
+//Importaciones
 import { getMesa, updateMesa, getReserva, updateReserva } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
-
+//Funciones
 function RecepcionistaView() {
+//useState: permite añadir el estado de React a un componente de función.
+//el estado actual y una función que lo actualiza
   const [selectionModelM, setSelectionModelM] = React.useState([]);
   const [disponibilidad, setDisponibilidad] = React.useState(null);
   const [mesa, setMesa] = React.useState(null);
@@ -12,7 +15,7 @@ function RecepcionistaView() {
   const [numMesa, setNumMesa] = React.useState(null);
   const [numMesas, setNumMesas] = React.useState(null);
 
-  //MESAS
+//columnas de las mesas
   const columnsM = [
     {
       field: "id",
@@ -37,16 +40,17 @@ function RecepcionistaView() {
   ];
 
   const rowM = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
     BuscarM();
   }, []);
-
+//Buscar mesa
   const BuscarM = async () => {
     const p = await getMesa();
     setMesa(p.docs);
   };
-
+//Actualizar mesa
   const ActualizarM = async () => {
     const id = selectionModelM[0];
     await updateMesa(id, disponibilidad);
@@ -67,7 +71,7 @@ function RecepcionistaView() {
     BuscarM();
     document.getElementById("formul").reset();
   };
-
+//Guardar mesa
   const GuardadoM = (item) => {
     return {
       id: item.id,
@@ -77,7 +81,7 @@ function RecepcionistaView() {
     };
   };
 
-  //RESERVA
+  //Columnas para la reserva
   const columnsR = [
     {
       field: "id",
@@ -102,16 +106,17 @@ function RecepcionistaView() {
   ];
 
   const rowR = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
     BuscarR();
   }, []);
-
+//Buscar reserva
   const BuscarR = async () => {
     const p = await getReserva();
     setNumMesas(p.docs);
   };
-
+//Actualizar reserva
   const ActualizarR = async () => {
     const id = selectionModelR[0];
     await updateReserva(id, numMesa);
@@ -132,7 +137,7 @@ function RecepcionistaView() {
     BuscarR();
     document.getElementById("formul").reset();
   };
-
+//Guardar reserva
   const GuardadoR = (item) => {
     return {
       id: item.id,
@@ -164,15 +169,15 @@ function RecepcionistaView() {
             onSelectionModelChange={(newSelectionModel) => {
               setSelectionModelM(newSelectionModel);
             }}
-            rows={mesa ? mesa.map(GuardadoM) : rowM}
+            rows={mesa ? mesa.map(GuardadoM) : rowM}//map: crea un nuevo array
             columns={columnsM}
             pageSize={5}
             rowsPerPageOptions={[5]}
           />
         </Box>
       </div>
+       {/*RESERVA */}
       <div className="reserva">
-        {/*RESERVA */}
         <form action="#" id="formul">
           <label>Número de Mesa:</label>
           <input

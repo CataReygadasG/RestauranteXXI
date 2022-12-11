@@ -1,14 +1,15 @@
 import React from "react";
-import { app } from "./fb";
 import AdminView from "./components/AdminView";
 import ChefView from "./components/ChefView";
 import RecepcionistaView from "./components/RecepcionistaView";
 import FinanzaView from "./components/FinanzaView";
 import BodegaView from "./components/BodegaView";
-const Home = ({ user }) => {
-  const cerrarSesion = () => {
-    app.auth().signOut();
-  };
+import {getAuth, signOut} from 'firebase/auth';
+import firebaseApp from "./fb";
+
+const auth = getAuth(firebaseApp)
+function Home  ({ user })  {
+ 
 
   return (
     <div id="home">
@@ -30,10 +31,8 @@ const Home = ({ user }) => {
         ""
       )}
       <div className="footer-home">
-        <button onClick={cerrarSesion} className="btn btn-primary btn-position">
-          Cerrar sesión
-        </button>
-      </div>
+        <button onClick={()=>signOut(auth)}>Cerrar sesión</button>
+        </div>
     </div>
   );
 };

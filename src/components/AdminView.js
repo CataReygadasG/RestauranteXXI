@@ -1,4 +1,4 @@
-import { app } from "../fb";
+//Importaciones
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {
@@ -16,29 +16,36 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
-
+import firebaseApp from "../fb";
+//estado inicial de las variables
 const initialState = {
   name: "",
   email: "",
   message: "",
 };
-
-const auth = getAuth(app);
-
-const firestore = getFirestore(app);
+//va a autenticar lo de la db (app)
+const auth = getAuth(firebaseApp);
+//getFirestore:llama a la propiedad Firestore.
+const firestore = getFirestore(firebaseApp);
 const AdminView = (props) => {
   const [{ name, email, message }, setState] = React.useState(initialState);
-
+  //??
+//handleChange:sincroniza el valor de los campos con el estado usando componentes controlados.
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target;//target: objeto
     setState((prevState) => ({ ...prevState, [name]: value }));
+    //...:  este operador nos permite copiar de manera simple una parte o la totalidad de un elemento
+    //prevState: estado anterior
   };
+  //limpiar el estado
   const clearState = () => setState({ ...initialState });
 
+//??
+//handleSubmit:especificar el método que debe de ejecutarse cuando el formulario es guardado
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();//cancela el evento,cualquier acción por defecto no ocurrirá.
     console.log(name, email, message);
-    emailjs
+    emailjs //ayuda a enviar correos electrónicos 
       .sendForm(
         "service_dp9ppxj",
         "template_3toh9le",
@@ -56,7 +63,7 @@ const AdminView = (props) => {
         }
       );
   };
-
+//Crear usuarios
   async function crearUsuario(correo, password, rol) {
     const crearUsuario = await createUserWithEmailAndPassword(
       auth,
@@ -67,7 +74,7 @@ const AdminView = (props) => {
     });
 
     console.log(crearUsuario.user.uid);
-    const docuRef = doc(firestore, `/usuarios/${crearUsuario.user.uid}`);
+    const docuRef = doc(firestore, `/usuarios/${crearUsuario.user.uid}`);//crear usuario
     setDoc(docuRef, { correo: correo, rol: rol });
   }
 
@@ -96,7 +103,8 @@ const AdminView = (props) => {
       }
     });
   };
-
+//useState: permite añadir el estado de React a un componente de función.
+// el estado actual y una función que lo actualiza
   const [selectionModelM, setSelectionModelM] = React.useState([]);
   const [numMesa, setNumMesa] = React.useState(null);
   const [numPers, setNumPers] = React.useState(null);
@@ -132,32 +140,33 @@ const AdminView = (props) => {
       width: 138,
     },
   ];
-
+//lista de la mesa
   const rowM = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
-    BuscarM();
+    BuscarM();//buscar mesa
   }, []);
 
   const BuscarM = async () => {
-    const p = await getMesa();
-    setMesa(p.docs);
+    const p = await getMesa();//obtener mesa, obtener una promesa que devuelve un objeto de respuesta
+    setMesa(p.docs);//le permite almacenar valores únicos de cualquier tipo
   };
-
+//Crear mesa
   const CrearM = async () => {
     await createMesa("Desocupado", numMesa, numPers);
     Swal.fire("Alert!", "La mesa se a creado correctamente", "success");
     BuscarM();
     document.getElementById("formul").reset();
   };
-
+//Eliminar mesa
   const EliminarM = async () => {
     const id = selectionModelM[0];
     await deleteMesa(id);
     Swal.fire("Alert!", "La mesa se a eliminado correctamente", "success");
     BuscarM();
   };
-
+//Guaradar mesa
   const GuardadoM = (item) => {
     return {
       id: item.id,
@@ -167,7 +176,7 @@ const AdminView = (props) => {
     };
   };
 
-  //PRODUCTOS VENTA
+  //Creación de productos del menu//
   const columnsP = [
     {
       field: "id",
@@ -195,31 +204,33 @@ const AdminView = (props) => {
       width: 200,
     },
   ];
-
+//lista vacia de productos
   const rowP = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
     BuscarP();
   }, []);
-
+//buscar producto
   const BuscarP = async () => {
     const p = await getProductoVenta();
     setProducts(p.docs);
   };
-
+//crear producto
   const CrearP = async () => {
     await createProductoVenta(description, pictureUrl, price, title);
     Swal.fire("Alert!", "El producto Se a creado correctamente", "success");
     BuscarP();
     document.getElementById("formul").reset();
   };
-
+//eliminar producto
   const EliminarP = async () => {
     const id = selectionModelP[0];
     await deleteProductoVenta(id);
     Swal.fire("Alert!", "El producto se a eliminado correctamente", "success");
     BuscarP();
   };
+  //actualizar producto
   const ActualizarP = async () => {
     const id = selectionModelP[0];
     await updateProductoVenta(id, price, pictureUrl);
@@ -231,7 +242,7 @@ const AdminView = (props) => {
     BuscarP();
     document.getElementById("formul").reset();
   };
-
+//guardar producto
   const GuardadoP = (item) => {
     return {
       id: item.id,
@@ -243,6 +254,7 @@ const AdminView = (props) => {
   };
 
   return (
+     /*CREACIÓN DE USUARIO*/
     <div id="admin-container">
       <div className="admin">
         <div className="admin-user">
@@ -283,6 +295,7 @@ const AdminView = (props) => {
             </button>
           </form>
 
+         { /*ORDEN PROVEDOR(BODEGA)*/}
           <h2>Orden a Proveedor</h2>
           <form validate onSubmit={handleSubmit}>
             <div className="form-group">
@@ -327,7 +340,7 @@ const AdminView = (props) => {
           </form>
         </div>
         <div className="admin-mesa">
-          {/*MESAS*/}
+          {/*CREACIÓN DE MESAS(RECEPCIONISTA)*/}
           <h2>Creación de mesas</h2>
           <form action="#" id="formul">
             <div className="form-group">
@@ -372,8 +385,8 @@ const AdminView = (props) => {
           </Box>
         </div>
         <div className="admin-venta">
-          {/*PRODUCTOS VENTA*/}
-          <h2>Creación de productos para venta</h2>
+          {/*PRODUCTOS DEL MENU A LA VENTA*/}
+          <h2>Creación de platos a la venta</h2>
           <form action="#" id="formul">
             <div className="form-group">
               <label>Descripción:</label>

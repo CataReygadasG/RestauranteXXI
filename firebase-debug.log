@@ -1,0 +1,66 @@
+[debug] [2022-12-09T19:29:44.604Z] ----------------------------------------------------------------------
+[debug] [2022-12-09T19:29:44.608Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Usuario\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-12-09T19:29:44.609Z] CLI Version:   11.17.0
+[debug] [2022-12-09T19:29:44.609Z] Platform:      win32
+[debug] [2022-12-09T19:29:44.610Z] Node Version:  v16.18.0
+[debug] [2022-12-09T19:29:44.612Z] Time:          Fri Dec 09 2022 16:29:44 GMT-0300 (hora de verano de Chile)
+[debug] [2022-12-09T19:29:44.612Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-09T19:29:44.619Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-12-09T19:29:44.803Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-09T19:29:44.804Z] > authorizing via signed-in user (catafranrey@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Usuario\Documents\GitHub\RestauranteXXI
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[debug] [2022-12-09T19:29:45.181Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-12-09T19:29:45.182Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-12-09T19:32:29.041Z] Using project from CLI flag: restaurante-a9164
+[debug] [2022-12-09T19:32:29.043Z] > refreshing access token with scopes: []
+[debug] [2022-12-09T19:32:29.044Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-12-09T19:32:29.044Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-09T19:32:29.112Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-12-09T19:32:29.112Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-12-09T19:32:29.124Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 [none]
+[debug] [2022-12-09T19:32:29.439Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 200
+[debug] [2022-12-09T19:32:29.439Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 {"projectId":"restaurante-a9164","projectNumber":"937756067811","displayName":"Restaurante","name":"projects/restaurante-a9164","resources":{"hostingSite":"restaurante-a9164","storageBucket":"restaurante-a9164.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_1ae6c0ec-1ca8-48db-a5a3-d2134c7f7315"}
+[info] i  Using project restaurante-a9164 (Restaurante) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2022-12-09T19:32:29.463Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com [none]
+[debug] [2022-12-09T19:32:29.463Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/restaurante-a9164
+[debug] [2022-12-09T19:32:30.430Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com 200
+[debug] [2022-12-09T19:32:30.430Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com [omitted]
+[warn] !  database: missing required API firebasedatabase.googleapis.com. Enabling now... 
+[debug] [2022-12-09T19:32:30.432Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com:enable [none]
+[debug] [2022-12-09T19:32:30.432Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com:enable x-goog-quota-user=projects/restaurante-a9164
+[debug] [2022-12-09T19:32:31.546Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com:enable 200
+[debug] [2022-12-09T19:32:31.547Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com:enable [omitted]
+[debug] [2022-12-09T19:32:41.558Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com [none]
+[debug] [2022-12-09T19:32:41.558Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com x-goog-quota-user=projects/restaurante-a9164
+[debug] [2022-12-09T19:32:42.433Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com 200
+[debug] [2022-12-09T19:32:42.433Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/restaurante-a9164/services/firebasedatabase.googleapis.com [omitted]
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2022-12-09T19:32:42.440Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 [none]
+[debug] [2022-12-09T19:32:42.747Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 200
+[debug] [2022-12-09T19:32:42.748Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/restaurante-a9164 {"projectId":"restaurante-a9164","projectNumber":"937756067811","displayName":"Restaurante","name":"projects/restaurante-a9164","resources":{"hostingSite":"restaurante-a9164","storageBucket":"restaurante-a9164.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_1ae6c0ec-1ca8-48db-a5a3-d2134c7f7315"}

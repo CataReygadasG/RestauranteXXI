@@ -1,14 +1,17 @@
+//Importaciones
 import { getOrden, updateOrden } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
-
+//funciones
 function ChefView() {
+//useState: permite añadir el estado de React a un componente de función.
+// el estado actual y una función que lo actualiza
   const [orden, setOrden] = React.useState(null);
   const [selectionModel, setSelectionModel] = React.useState([]);
   const [estadoOrden, setEstadoOrden] = React.useState("");
-
+//Columnas
   const columns = [
     { field: "id", headerName: "ID", width: 200 },
     {
@@ -34,16 +37,17 @@ function ChefView() {
   ];
 
   const row = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
     Buscar();
   }, []);
-
+//Buscar pedido
   const Buscar = async () => {
     const p = await getOrden();
     setOrden(p.docs);
   };
-
+//Actualizar estado del pedido
   const Actualizar = async () => {
     const id = selectionModel[0];
     await updateOrden(id, estadoOrden);
@@ -63,7 +67,7 @@ function ChefView() {
     }
     Buscar();
   };
-
+//Guardar pedido
   const Guardado = (item) => {
     return {
       id: item.id,

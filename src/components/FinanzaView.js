@@ -1,14 +1,17 @@
+//Importaciones
 import { getPago, updatePago } from "./api";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
-
+//funciones
 function FinanzaView() {
+//useState: permite añadir el estado de React a un componente de función.
+// el estado actual y una función que lo actualiza
   const [estado_pago, setEstado_pago] = React.useState("");
   const [pago, setPago] = React.useState(null);
   const [selectionModel, setSelectionModel] = React.useState([]);
-
+//Columnas
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -32,18 +35,19 @@ function FinanzaView() {
       width: 120,
     },
   ];
-
+//arreglo vacio
   const row = [];
-
+//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+//el ciclo de vida de nuestro componente
   React.useEffect(() => {
     Buscar();
   }, []);
-
+//Buscar pedido
   const Buscar = async () => {
     const p = await getPago();
     setPago(p.docs);
   };
-
+//Actualizar pedido
   const Actualizar = async () => {
     const id = selectionModel[0];
     await updatePago(id, estado_pago);
@@ -63,11 +67,10 @@ function FinanzaView() {
     }
     Buscar();
   };
-
+//Pago guardado
   const Guardado = (item) => {
     const dayjs = require("dayjs");
     const date = item.data().date.seconds;
-
     const dateConverted = dayjs.unix(date).format("DD/MM/YYYY");
     const hourConverted = dayjs.unix(date).format("hh:mm:ss");
 
