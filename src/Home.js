@@ -15,7 +15,7 @@ function Home  ({ user })  {
     <div id="home">
       <div className="title-home">
         <img src="/img/Logo_2.jpg" className="img-logo" alt="siglo_xxi" />
-        <h1>Restaurente Siglo XXI</h1>
+        <h1>Restaurante Siglo XXI</h1>
       </div>
       {user.rol === "chef" ? (
         <ChefView />
@@ -30,7 +30,7 @@ function Home  ({ user })  {
       ) : (
         ""
       )}
-      <div className="footer-home">
+      <div btn btn-primary className="footer-home" >
         <button onClick={()=>signOut(auth)}>Cerrar sesión</button>
         </div>
     </div>

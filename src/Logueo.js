@@ -13,17 +13,19 @@ const Logueo = (props) => {
 
   const iniciarSesion = (correo, password) => {
     //iniciar sesion
+    //
   try{
     signInWithEmailAndPassword(auth, correo, password)//iniciar sesión con correo electrónico y contraseña
     .then((usuarioFirebase) => { //método then: devuelve una Promise que permite encadenar métodos
       console.log("sesión iniciada con:", usuarioFirebase.user);
-      props.setRegistrado(usuarioFirebase);//asigna nuevo valor al usuario firebase
+      setRegistrado(usuarioFirebase);//asigna nuevo valor al usuario firebase
     })
     .catch((err) => {console.log(err)
+      
       Swal.fire({
         icon: "info",
-        title: "error de autenticación",
-        text: "usuario no existe o contraseña incorrecta",
+        title: "Error al iniciar sesión",
+        text: "Tu usuario o contraseña no es correcta",
         button: "success",
       });
     })
