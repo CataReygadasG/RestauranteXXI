@@ -32,13 +32,13 @@ export const getProducto = async () => {
 // UPDATE
 export const updateProducto = async (
   id,
-  Categoria,
-  PrecioUni,
   Producto,
+  PrecioUni,
+  Categoria,
   Stock
 ) => {
   const colRef = collection(firestore, "Bodega");
-  await updateDoc(doc(colRef, id), { Categoria, PrecioUni, Producto, Stock });
+  await updateDoc(doc(colRef, id), { Producto, PrecioUni, Categoria, Stock });
 };
 
 // DELETE
