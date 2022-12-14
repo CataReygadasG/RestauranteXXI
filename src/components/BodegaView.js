@@ -11,15 +11,15 @@ import { DataGrid } from "@mui/x-data-grid";
 import Swal from "sweetalert2";
 
 function BodegaView() {
-//useState: permite añadir el estado de React a un componente de función.
-// el estado actual y una función que lo actualiza
+  //useState: permite añadir el estado de React a un componente de función.
+  // el estado actual y una función que lo actualiza
   const [producto, setProducto] = React.useState(null);
   const [stock, setStock] = React.useState(null);
   const [categoria, setCategoria] = React.useState(null);
   const [precioU, setPrecioU] = React.useState(null);
   const [product, setProduct] = React.useState(null);
   const [selectionModel, setSelectionModel] = React.useState([]);
-//Columnas de bodega
+  //Columnas de bodega
   const columns = [
     { field: "id", headerName: "ID", width: 150 },
     {
@@ -43,36 +43,36 @@ function BodegaView() {
       width: 150,
     },
   ];
-//Inicializan las filas vacias
+  //Inicializan las filas vacias
   const row = [];
-//Crear productos de la bodega
+  //Crear productos de la bodega
   const Crear = async () => {
     await createProducto(categoria, precioU, producto, stock);
     Swal.fire("Alert!", "El producto se a creado correctamente", "success");
     Buscar();
     document.getElementById("formul").reset();
   };
-//useEffect:ejecutar un trozo de código según el momento en el que se encuentre
-//el ciclo de vida de nuestro componente
+  //useEffect:ejecutar un trozo de código según el momento en el que se encuentre
+  //el ciclo de vida de nuestro componente
   React.useEffect(() => {
     Buscar();
   }, []);
-//Buscar productos 
+  //Buscar productos
   const Buscar = async () => {
     const p = await getProducto();
     setProduct(p.docs);
   };
-//Buscar producto
+  //Buscar producto
   const Eliminar = async () => {
     const id = selectionModel[0];
     await deleteProducto(id);
     Swal.fire("Alert!", "El producto se a eliminado correctamente", "success");
     Buscar();
   };
-//Actualización de productos
+  //Actualización de productos
   const Actualizar = async () => {
     const id = selectionModel[0];
-    await updateProducto(id, precioU, stock);
+    await updateProducto(id, producto, precioU, categoria, stock);
     Swal.fire(
       "Alert!",
       "El producto se a actualizado correctamente",
@@ -81,7 +81,7 @@ function BodegaView() {
     Buscar();
     document.getElementById("formul").reset();
   };
-//Guardar productos
+  //Guardar productos
   const Guardado = (item) => {
     return {
       id: item.id,

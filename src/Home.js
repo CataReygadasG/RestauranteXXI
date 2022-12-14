@@ -4,13 +4,11 @@ import ChefView from "./components/ChefView";
 import RecepcionistaView from "./components/RecepcionistaView";
 import FinanzaView from "./components/FinanzaView";
 import BodegaView from "./components/BodegaView";
-import {getAuth, signOut} from 'firebase/auth';
+import { getAuth, signOut } from "firebase/auth";
 import firebaseApp from "./fb";
 
-const auth = getAuth(firebaseApp)
-function Home  ({ user })  {
- 
-
+const auth = getAuth(firebaseApp);
+function Home({ user }) {
   return (
     <div id="home">
       <div className="title-home">
@@ -30,11 +28,13 @@ function Home  ({ user })  {
       ) : (
         ""
       )}
-      <div btn btn-primary className="footer-home" >
-        <button onClick={()=>signOut(auth)}>Cerrar sesión</button>
-        </div>
+      <div className="footer-home">
+        <button class="btn btn-primary" onClick={() => signOut(auth)}>
+          Cerrar sesión
+        </button>
+      </div>
     </div>
   );
-};
+}
 
 export default Home;

@@ -8,11 +8,11 @@ import {
   addDoc,
   deleteDoc,
   updateDoc,
-  getFirestore
+  getFirestore,
 } from "firebase/firestore";
 import firebaseApp from "../fb";
 
-const firestore = getFirestore (firebaseApp)
+const firestore = getFirestore(firebaseApp);
 
 //PRODUCTO
 // CREATE
@@ -30,9 +30,15 @@ export const getProducto = async () => {
 };
 
 // UPDATE
-export const updateProducto = async (id, PrecioUni, Stock) => {
+export const updateProducto = async (
+  id,
+  Categoria,
+  PrecioUni,
+  Producto,
+  Stock
+) => {
   const colRef = collection(firestore, "Bodega");
-  await updateDoc(doc(colRef, id), { PrecioUni, Stock });
+  await updateDoc(doc(colRef, id), { Categoria, PrecioUni, Producto, Stock });
 };
 
 // DELETE
@@ -95,7 +101,10 @@ export const updateOrden = async (id, estado) => {
 // ADMIN
 // CREATE MESA
 export const createMesa = async (Disponibilidad, Mesa, NumPersonas) => {
-  addDoc(collection(firestore, "Mesas"), await { Disponibilidad, Mesa, NumPersonas });
+  addDoc(
+    collection(firestore, "Mesas"),
+    await { Disponibilidad, Mesa, NumPersonas }
+  );
 };
 
 // DELETE MESA
