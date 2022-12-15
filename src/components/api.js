@@ -140,7 +140,7 @@ export const deleteProductoVenta = async (id) => {
 
 // UPDATE PRODUCTOS VENTA
 export const updateProductoVenta = async (id, price, pictureUrl) => {
-  const colRef = collection(firestore, "orders");
+  const colRef = collection(firestore, "products");
   await updateDoc(doc(colRef, id), { price, pictureUrl });
 };
 
